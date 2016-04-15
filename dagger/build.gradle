@@ -60,14 +60,21 @@ task javadocJar(type: Jar, dependsOn: javadoc) {
     from javadoc.destinationDir
 }
 
+configurations {
+    shadow
+    compile.extendsFrom provided
+    provided.extendsFrom shadow
+}
+import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
+
+task fatJar(type: ShadowJar) {
+    configurations = [project.configurations.shadow]
+    from(project.sourceSets.main.output)
+}
+
+
 artifacts {
     // archives shadowJar
     archives sourcesJar
     archives javadocJar
-}
-import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
-task pluginJar(type: ShadowJar) {
-    //  configurations = [project.configurations.shadowJar] Dependencies with this configuration will be included
-    classifier = '' // Make a jar called [name]-[version]-[yourCustomAppendix].jar
-    /* More contents not shown */
 }
