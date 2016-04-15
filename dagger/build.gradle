@@ -67,14 +67,14 @@ configurations {
 }
 import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 
-task fatJar(type: ShadowJar) {
+task javaelJar(type: ShadowJar) {
     configurations = [project.configurations.shadow]
     from(project.sourceSets.main.output)
 }
 
 
 artifacts {
-      archives fatJar
+      archives javaelJar
     archives sourcesJar
     archives javadocJar
 }
