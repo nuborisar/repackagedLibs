@@ -1,3 +1,7 @@
+//apply plugin: 'com.github.dcendents.android-maven' //jitpack
+group='com.github.GigigoGreenLabs' //jitpack
+
+
 buildscript {
     repositories { jcenter() }
     dependencies {
