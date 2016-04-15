@@ -65,3 +65,9 @@ artifacts {
     archives sourcesJar
     archives javadocJar
 }
+import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
+task pluginJar(type: ShadowJar) {
+    //  configurations = [project.configurations.shadowJar] Dependencies with this configuration will be included
+    classifier = '' // Make a jar called [name]-[version]-[yourCustomAppendix].jar
+    /* More contents not shown */
+}
