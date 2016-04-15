@@ -1,11 +1,12 @@
 //apply plugin: 'com.github.dcendents.android-maven' //jitpack
-group='com.github.GigigoGreenLabs' //jitpack
+group = 'com.github.GigigoGreenLabs' //jitpack
 
 
 buildscript {
     repositories { jcenter() }
     dependencies {
         classpath 'com.github.jengelman.gradle.plugins:shadow:1.2.3'
+        //asv'com.github.johnrengelman.shadow' version '1.2.3'
     }
 }
 
@@ -31,7 +32,8 @@ shadowJar {
     relocate 'dagger.Provides$Type', 'orchextra.dagger.Provides$Type'
     relocate 'dagger.internal', 'orchextra.dagger.internal'
     relocate 'dagger.producers', 'orchextra.dagger.producers'
-    baseName = 'dagger-shadow'
+    baseName = 'dagger'
+    //baseName = 'dagger-shadow'
     classifier = ''
 }
 
@@ -42,7 +44,8 @@ publishing {
     publications {
         shadow(MavenPublication) {
             from components.shadow
-            artifactId = 'dagger-shadow'
+           // artifactId = 'dagger-shadow'
+            artifactId = 'dagger'
         }
     }
 }
@@ -58,7 +61,7 @@ task javadocJar(type: Jar, dependsOn: javadoc) {
 }
 
 artifacts {
-  archives shadowJar
+    // archives shadowJar
     archives sourcesJar
     archives javadocJar
 }
