@@ -1,5 +1,4 @@
-//apply plugin: 'com.github.dcendents.android-maven' //jitpack
-group = 'com.github.GigigoGreenLabs' //jitpack
+
 
 
 buildscript {
@@ -14,6 +13,9 @@ apply plugin: 'java'
 apply plugin: 'com.github.johnrengelman.shadow'
 apply plugin: 'maven'
 apply plugin: 'maven-publish'
+//apply plugin: 'com.github.dcendents.android-maven' //jitpack
+group = 'com.github.GigigoGreenLabs' //jitpack
+
 
 dependencies {
     compile 'com.google.dagger:dagger:2.2'
