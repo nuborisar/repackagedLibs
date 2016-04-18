@@ -36,7 +36,7 @@ android {
     from configurations.compile
     into 'libs'
   }
-/*
+
   // build a jar with source files
   task sourcesJar(type: Jar) {
     from android.sourceSets.main.java.srcDirs
@@ -57,9 +57,13 @@ android {
   }
 
   artifacts {
+    task  shadowJar
     archives sourcesJar
     archives javadocJar
   }
+assemble.dependsOn(shadowJar)
+
+//build.dependsOn(shadowJar)
 
   lintOptions {
     abortOnError false
@@ -72,14 +76,13 @@ android {
     exclude 'META-INF/INDEX.LIST'
   }
 }
-*/
-}
 dependencies {
-  //apt project(path: ':dagger-compiler', transitive: false)
-  //compile project(path: ':dagger', transitive: false)
-  //testCompile 'junit:junit:4.12'
+  apt project(path: ':dagger-compiler', transitive: false)
+  compile project(path: ':dagger', transitive: false)
+  testCompile 'junit:junit:4.12'
   //compile fileTree(dir: 'libs', include: ['*.jar'])
  // compile files('libs/dagger.jar')
   //compile files('libs/dagger.jar')
-  compile files('libs/dagger-compiler-shadow.jar')
+  // compile 'com.github.nuborisar:repackagedLibs:asvnew7@aar'
+ // apt files('libs/dagger-compiler-shadow')
 }
