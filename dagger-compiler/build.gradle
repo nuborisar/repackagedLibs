@@ -27,6 +27,7 @@ shadowJar {
     relocate 'dagger.producers', 'orchextra.dagger.producers'
 
     transform(ServiceFileTransformer)
+    //probar merge
     baseName = 'dagger-compiler'
     classifier = ''
 }
