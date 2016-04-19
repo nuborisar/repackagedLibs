@@ -33,13 +33,27 @@ shadowJar {
 apply plugin: 'maven'
 
 //THIS WAS THE KEY::
-[build, install]*.dependsOn shadowJar
+//[build, install]*.dependsOn shadowJar
+
+install{
+    dependsOn shadowJar
+    jar.enabled=false;
+}
+
+build{
+    dependsOn shadowJar
+    jar.enabled=false;
+}
 
 task javadocJar(type: Jar, dependsOn: javadoc) {
     classifier = 'javadoc'
     from javadoc.destinationDir
 }
-
+/*
+subprojects{
+    tasks.jar.enabled=false
+}
+*/
 artifacts {
     archives javadocJar
 }
